@@ -1,18 +1,18 @@
 /* CSS variables */
 
 :root {
-  --cardFromRight: #acbea3;
-  --cardFromLeft: #120d31;
-  --rotate: #8de969;
+  --cardFromRight: #ffd788;
+  --cardFromLeft: rgb(49, 131, 132);
+  --rotate: rgb(114, 147, 246);
 }
 
 /* BODY*/
 body {
-  font-family: 'Poppins', serif;
+  font-family: 'Poppins', monospace;
 }
 
 /* MAIN */
-main {
+.main {
   height: 100vh;
   gap: 50px;
   display: flex;
@@ -35,10 +35,34 @@ main {
 .slideInLeftCard {
   background-color: var(--cardFromLeft);
   color: whitesmoke;
+  animation-name: slideInLeft;
+  animation-duration: 2s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100vw);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .slideInRightCard {
   background-color: var(--cardFromRight);
+  animation-name: slideInRight;
+  animation-duration: 2s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .rotateCard {
@@ -46,6 +70,30 @@ main {
   width: 100px;
   height: 100px;
   background-color: var(--rotate);
+  animation-name: fullRotation;
+  animation-duration: 2s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fullRotation {
+  0% {
+    transform: rotate(-360deg);
+  }
+  //* 50% {
+    transform: rotate(0);
+    scale: 1;
+  } *//
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.flexColCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .buttonContainer {
@@ -61,4 +109,32 @@ main {
   border-color: lightgrey;
   border-style: solid;
   box-shadow: 2px 2px 5px lightgrey;
+
+  transition-duration: 200ms;
+  transition-timing-function: ease-in;
 }
+
+.buttonColor, .buttonSize, .buttonOpacity {
+  /* alternativ til å ha alt i .button*/
+}
+
+.buttonColor:hover {
+  background-color: rgb(218, 110, 110);
+}
+
+.buttonSize {
+  transition: 200ms ease-in;
+} /* unødvendig, siden det er inkludert i .button eller funksjonen under button med alle de andre */
+
+.buttonSize:hover {
+  scale: 1.12;
+}
+
+.buttonOpacity:hover {
+  opacity: 50%;
+}
+
+.card:hover {
+  scale: 1.03;
+  transition: 100ms ease-in;
+} 
